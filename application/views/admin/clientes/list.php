@@ -50,8 +50,8 @@
               <tr>
                 <th width="1"></th>
 				<th width="61">Código</th>
-                <th width="60">Nombre</th>
-                <th width="61">Apellido</th>
+                <th width="60">Razon social</th>
+
                 <th width="29">Nit.</th>
                 <th width="65">Teléfono</th>                
                 <th width="57">Trabajo</th>
@@ -77,7 +77,7 @@
                 <td></td>
 				<td><?php echo $key['cod_cliente_pref'] ?></td>
                 <td><?php echo $key['nom_cliente'] ?></td>
-                <td><?php echo $key['ape_cliente']  ?></td>
+                <!--<td><?php /*echo $key['ape_cliente']  */?></td>-->
                 <td><?php echo $key['dui_cliente']  ?></td>
                 <td><?php echo $key['tel_cliente']  ?></td>                
                 <td><?php echo $key['lugar_trabajo']  ?></td>
@@ -144,9 +144,9 @@
                 	<p>
                   <label>N° Cuenta</label><br /> <input type="text" name="cod_cliente" size="55" class="text required"/></p>
                     <p>
-                  <label>Nombre Completo</label><br /> <input type="text" name="nom_cliente"  size="55" class="text required alpha"/></p>
+                  <label>Razon social</label><br /> <input type="text" name="nom_cliente"  size="55" class="text required alpha"/></p>
                     <p>
-                  <label>Apellido Completo</label><br /> <input type="text" name="ape_cliente" size="55" class="text required alpha"/></p>
+                  <label>Nombre contacto</label><br /> <input type="text" name="ape_cliente" size="55" class="text required alpha"/></p>
                     
                     <p>
                   <label>Nit</label><br /> <input type="text" name="dui_cliente" size="55" class="text required"/></p>

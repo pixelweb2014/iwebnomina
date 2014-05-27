@@ -109,7 +109,7 @@ class Facturas extends Controller
 			
 			$html = '
 			<style type="text/css">
-				table.content{ border:thick solid #909090;margin:10px 0px 0px 0px}
+				table.content{ border:thick solid #909090;margin:5px 0px 0px 0px}
                 .hdetail{background:#8AC007;}
 				.hdetail td{ color: #ffffff;text-align:center; font-weight: bold}
 				.text_r{text-align:right; }
@@ -123,7 +123,7 @@ class Facturas extends Controller
                 .direccion{ border-bottom:thick solid #909090; width:150px}
                 .telefono{ border-bottom:thick solid #909090; width:150px}
                 .forma_pago{ border-bottom:thick solid #909090; width:150px}
-                .tdt{font-size:9px}
+                .tdt{font-size:11px}
                 .empresa_info{ font-size:10px; color:#2B2F38;line-height:110%}
 				.data td{ font-size:10px; }
 				.bg{border:thick solid #cccccc; color: #2B2F38;background:#ffffff; text-align:center;padding:5px }
@@ -134,11 +134,11 @@ class Facturas extends Controller
 				.foot2 { text-align:center;color:#FFFFFF; background:#22ACC8; font-size:10px; padding:5px;width:840px;left:-19px;bottom:-30px;position:absolute}
 			</style>
 
-			<page backtop="7mm" backbottom="7mm" backleft="10mm" backright="10mm"> 
+			<page> 
 			
-			<table width="900" align="center" cellpadding="0" cellspacing="0" border="0">
+			<table width="" align="center" cellpadding="0" cellspacing="0" border="0">
 				<tr>
-			        <th width="120" valign="top" class="data">
+			        <th width="140" valign="top" class="data">
                     <table cellspacing="2" align="center">
 							<tr>
 							<td colspan="3" >FECHA DE ELABORACIÒN</td>
@@ -152,7 +152,7 @@ class Facturas extends Controller
 					</table>
 
 			        </th>
-					<th width="120" valign="top" class="data" >
+					<th width="140" valign="top" class="data" >
 					 <table cellspacing="2" align="center">
 							<tr>
 							<td colspan="3">FECHA DE VENCIMIENTO</td>
@@ -167,7 +167,7 @@ class Facturas extends Controller
 
 					</th>
 
-					<th width="180" valign="top" class="text_r">
+					<th width="230" valign="top" class="text_r">
 					 <h2 class="factura_title">FACTURA</h2>
 					 <span class="factura_num">'.$data[0]['num_factu_venta'].'</span>
 					 <p class="factura_info">
@@ -193,18 +193,18 @@ class Facturas extends Controller
 				</tr>
 
 				<tr>
-				<th width="160" colspan="3" valign="top">
+				<th width="480" colspan="3" valign="top">
 
                 <table cellspacing="5" align="left" class="cliente_info">
 				<tr>
 					<td colspan="3" class="razon_social">Razón social: '.$data[0]['nom_cliente'].' '.$data[0]['ape_cliente'].''.'</td>
 				</tr>
 				<tr>
-				<td class="nit">NIT / CC: '.$data[0]['dui_cliente'].'</td>
-				<td class="telefono">Tel: '.$data[0]['tel_cliente'].'</td>
+				<td class="nit" width="330" >NIT / CC: '.$data[0]['dui_cliente'].'</td>
+				<td class="telefono" width="180">Tel: '.$data[0]['tel_cliente'].'</td>
 				</tr>
 				<tr>
-				<td class="direccion">Dirección: '.$data[0]['dir_cliente'].'</td>
+				<td class="direccion" >Dirección: '.$data[0]['dir_cliente'].'</td>
 				<td class="forma_pago"> Forma de pago: CONTADO</td>
 				</tr>
 				</table>
@@ -215,14 +215,14 @@ class Facturas extends Controller
 			</table>
 			';
 			
-			$html .='<table align="center" cellspadding="5" cellspacing="1" width="700" class="content">
+			$html .='<table align="center" cellspadding="5" cellspacing="2" width="" class="content">
 						<tr class="hdetail">
 
-							<td width="50">Cantidad</td>
-							<td width="150">Descripción</td>
-							<td width="75">Vlr hora</td>
+							<td width="60">Cantidad</td>
+							<td width="470">Descripción</td>
+							<td width="90">Vlr hora</td>
 
-							<td width="75">Vlr. Total</td>
+							<td width="90">Vlr. Total</td>
 						</tr>';
 			foreach($detail as $k){
 
@@ -243,8 +243,14 @@ class Facturas extends Controller
 				
 			}
 			
-			$height = 60 - (count($detail) * 35);
-			
+			$height = 190 - (count($detail) * 35);
+			$html .='<tr>
+						<td></td>
+						<td></td>
+						<td height="'.$height.'"></td>
+						
+						
+					</tr>';
 			$html .='
 			<tr  class="bg2">
 						<td colspan="2">OBSERVACIONES</td>
@@ -252,9 +258,9 @@ class Facturas extends Controller
 			</tr>
 			<tr>
 						<td colspan="2" valign="top">
-						 <table cellspacing="2" align="left" border="0" width="380">
+						 <table cellspacing="2" align="left" border="0" width="">
 							<tr>
-							<td width="190">Aceptada</td>
+							<td width="320">Aceptada</td>
 							<td width="190"><span class="fnt2">1. Acepto y declaro haber recibido el servicio a satisfaccion.&nbsp;<br>
 							2. El vendedor se reserva el derecho de cobrar intereses de mora hasta el maximo legalizado</span>
 							</td>
@@ -272,9 +278,9 @@ class Facturas extends Controller
 							
 
 							<tr class="bg2">
-							<td width="75"  >TOTAL</td>
-							<td width="75">							</td>
-							<td width="75" align="right">'.number_format($total,2).'</td>
+							<td width="90">TOTAL</td>
+							
+							<td width="90" align="right">'.number_format($total,2).'</td>
 							</tr>
 
 					</table>
@@ -300,7 +306,7 @@ class Facturas extends Controller
 
         $format =array('220.3375','135.3375');
    require_once('public/admin/html2pdf/html2pdf.class.php');
-   $html2pdf = new HTML2PDF('L',$format,'en',array(10, 10, 10, 10));
+   $html2pdf = new HTML2PDF('L',$format,'en',array(0, 0, 0, 0));
    $html2pdf->WriteHTML($html);
    $html2pdf->Output('Facturas '.$data[0]['numero'].'.pdf');
 

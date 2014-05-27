@@ -1,4 +1,7 @@
 <form method="post" action="ordenes/crear_factura" name="frm12">
+
+<input name="fecha_emision" id="targetdate" type="hidden">
+
 <div class="block">
 
     <div class="block_head">
@@ -47,8 +50,16 @@
 
         function crear_factura(){
 
-            if($("#clientesl").val() != '0' && $('#tbls >tbody >tr').length != 0){
-                document.frm12.submit()
+
+
+
+
+            if($("#clientesl").val() != '0' && $('#tbls >tbody >tr').length != 0 && $('input[name="ordenes[]"]:checked').length > 0){
+
+                $( "#dialog-form" ).dialog( "open" );
+               
+
+
 
             }else{
                 alert("Debes seleccionar un cliente y buscar las ordenes relacionadas a este");
@@ -107,29 +118,34 @@
 		 }
     	$(document).ready(function(){	 		
 			
-			search_factura();
+			//search_factura();
 			
 			$("#btn_search").click(function(){
+
+
+
+
+
 				search_factura();
 			});
 
 
 
-			
-			
-			var dates = $('#fechai, #fechaf').datepicker({
-			showOn: "button",
-			buttonImage: "public/admin/images/calendar.png",
-			buttonImageOnly: true,
-			maxDate: '+3M',
-			dateFormat: 'yy-mm-dd',
-			onSelect: function(selectedDate) {
-				var option = this.id == "fechai" ? "minDate" : "maxDate";
-				var instance = $(this).data("datepicker");
-				var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
-				dates.not(this).datepicker("option", option, date);
-			}
-		});
+
+
+            var dates = $('#fechai, #fechaf','#fechal').datepicker({
+                showOn: "button",
+                buttonImage: "public/admin/images/calendar.png",
+                buttonImageOnly: true,
+                maxDate: '+3M',
+                dateFormat: 'yy-mm-dd',
+                onSelect: function(selectedDate) {
+                    var option = this.id == "fechai" ? "minDate" : "maxDate";
+                    var instance = $(this).data("datepicker");
+                    var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+                }
+            });
 			
 		});
     </script>
@@ -194,4 +210,65 @@
     <div class="bendr"></div>
 </div>
 
+
+
+<div id="dialog-form" title="Generación de factura" style="height: 180px; width: 180px">
+    <p class="validateTips">Indiquenos la fecha de emision para esta factura:</p>
+
+
+            <input type="text"  id="fechal" class="text ui-widget-content ui-corner-all">
+
+
+
+</div>
 </form>
+<script>
+
+    $( "#dialog-form" ).dialog({
+        autoOpen: false,
+        height: 300,
+        width: 350,
+        modal: true,
+        buttons: {
+            "Aceptar": function() {
+
+if($('#fechal').val() != ''){
+
+
+    $('#targetdate').val($('#fechal').val())
+
+
+    document.frm12.submit()
+}else{
+    alert("Debe seleccionar una fecha de expedicion para generar la factura")
+}
+
+            },
+            Cancelar: function() {
+                $( this ).dialog( "close" );
+            }
+        },
+        close: function() {
+
+        },
+        open: function(){
+
+
+            var dates = $('#fechal').datepicker({
+                showOn: "button",
+                buttonImage: "public/admin/images/calendar.png",
+                buttonImageOnly: true,
+                maxDate: '+3M',
+                dateFormat: 'yy-mm-dd',
+                onSelect: function(selectedDate) {
+                    var option = this.id == "fechai" ? "minDate" : "maxDate";
+                    var instance = $(this).data("datepicker");
+                    var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+                }
+            });
+
+        }
+    });
+
+</script>

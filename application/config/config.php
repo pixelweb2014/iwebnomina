@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://www.pixelweb.com.co/iwebnomina";
+$config['base_url']	= "http://localhost/sistemainventarios";
 
 /*
 |--------------------------------------------------------------------------

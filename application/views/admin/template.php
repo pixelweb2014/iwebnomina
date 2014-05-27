@@ -16,14 +16,14 @@ $this->output->set_title();
 <base href="http://www.pixelweb.com.co/iwebnomina/" />
 
 
-    <script type="text/javascript" src="public/admin/js/bootstrap-timepicker.min.js"></script>
+
 
 
 
 
     <title>Administrador : <?php echo NOMBRE_SITIO?></title>
 <style type="text/css" media="all">
-    @import url("public/admin/css/bootstrap-timepicker.min.css");
+
     @import url("public/admin/css/style.css");
     @import url("public/admin/css/jquery.wysiwyg.css");
     @import url("public/admin/css/facebox.css");

@@ -1079,6 +1079,8 @@ class CI_Loader {
 		return (is_object($CI)) ? TRUE : FALSE;
 	}
 
+
+
 }
 
 /* End of file Loader.php */

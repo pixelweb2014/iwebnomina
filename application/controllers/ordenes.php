@@ -707,7 +707,15 @@ class Ordenes extends Controller
 
         $max_cod_factura = $this->db->query("select MAX(num_factu_venta) as codigo from enc_ventas")->row();
 
-        $nuevo_cod = $max_cod_factura->codigo + 1;
+
+        echo $max_cod_factura->codigo;
+
+
+        $nuevo_cod = (int) $max_cod_factura->codigo + 1;
+
+
+
+
 
       //  print_r($_POST);
 
@@ -745,6 +753,10 @@ $horas = 0;
 
          $total_g += $this->decimal($total_horas, $orden->valor_hora);
 
+         $this->db->query("update enc_orden set estado = 'facturada' where numero = '".$_POST['ordenes'][$i]."'");
+
+      //   echo $this->db->last_query();
+
 
     }
 
@@ -754,7 +766,11 @@ $horas = 0;
         $_POST['nom_empleado'] = "user";
         $_POST['numero'] = $nuevo_cod;
 
-        $_POST['fecha'] = date('Y-m-d');
+        $_POST['fecha'] = $_POST['fecha_emision'];
+
+         $nuevafecha = strtotime ( '+8 day' , strtotime ( $_POST['fecha'] ) ) ;
+        $_POST['fecha_vencimiento'] = date ( 'Y-m-d' , $nuevafecha );
+
         //  $saldo = $cuota_data->total - ($abonos_total + $_POST['abono']);
         $_POST['condicion_pago'] = '0';
         $_POST['input_total_civa'] = $total_g;
@@ -764,12 +780,10 @@ $horas = 0;
 
         $cod = $this->facturas->add();
 
-        $this->db->query("update enc_orden set estado = 'facturada' where numero = '".$_POST['ordenes'][$i]."'");
 
-         //   echo "cod: ".$cod;
 //
 
-        $this->session->set_flashdata('message', '<div class="message success">Se ha guardado correctamente</div>');
+        $this->session->set_flashdata('message', '<div class="message success">Se ha generado la factura correctamente No. '.$cod.' </div>');
 
 
 

@@ -125,7 +125,8 @@ class Facturas_model extends Model
 			"num_factu_venta"						=> $_POST['numero'],
 			"monto"									=> $_POST['input_total_civa'],
 			"fecha_venta"  		    				=> $_POST['fecha'],
-			"condicion_pago"  		    			=> $_POST['condicion_pago']
+			"condicion_pago"  		    			=> $_POST['condicion_pago'],
+            "fecha_vencimiento"                     => $_POST['fecha_vencimiento']
 		);
 		
 		$this->db->insert("enc_ventas",$array_datos);
