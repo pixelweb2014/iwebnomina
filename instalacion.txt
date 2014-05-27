@@ -1,0 +1,15 @@
+Instalación del Sistema
+-----------------------
+
+1.- Crear la base de datos y luego importar el archivo  /backups/bd.sql
+
+2.- Configurar el sitio web,  abrimos el archivo  application/config/config.php  
+    buscar donde dice http://www.tudominio.com/  y reemplazar por su dominio.
+
+3.- Configurar la base de datos, abrimos application/config/database.php 
+    y colocar los datos necesarios para la conexión usuario, clave y nombre de la base de datos.
+
+4.- Y por ultimo abrimos el archivo application/views/admin/templates.php, modificamos la línea  http://www.tudominio.com/  
+
+por su dominio también en application/views/admin/login.php hacemos exactamente lo mismo.	http://www.tudominio.com/ 
+
